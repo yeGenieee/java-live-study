@@ -20,11 +20,13 @@
 
 ### 8. 타입 추론, var
 
-## 1. 프리미티브 타입의 종류와 값의 범위 그리고 기본값
+
+
+# 1. 프리미티브 타입의 종류와 값의 범위 그리고 기본값
 
   자바의 데이터 타입은 Primitive 타입과 Non-Primitive 타입으로 나뉜다. 먼저 프리미티브 타입 (기본 타입) 부터 살펴보자.
 
-### 데이터 타입
+## 데이터 타입
 
 - 모든 변수에는 타입이 있으며, 타입에 따라 저장할 수 있는 값의 종류와 범위가 달라짐
 
@@ -33,49 +35,48 @@
 1. 기본 (원시 : primitive) 타입
 2. Non-Primitive 타입
 
-![image-20201121171139201](image/java_data_type.png)
+<img src="image/java_data_type.png" alt="image-20201121171139201" style="zoom:40%;" />
 
-[출처]https://www.javatpoint.com/java-data-types
+[출처] https://www.javatpoint.com/java-data-types
 
-### 1. 기본 (원시 : primitive) 
+## 1. 기본 (원시 : primitive) 타입
 
 - 정수 , 실수 , 문자 , 논리 리터럴을 직접 저장하는 타입
 
-![image-20201121171727955](image/data_type_ranges.png)
+<img src="image/data_type_ranges.png" alt="image-20201121171727955" style="zoom:80%;" />
 
 [출처] https://www.geeksforgeeks.org/data-types-in-java/
 
->  메모리 단위
+>  **메모리 단위**
 >
-> - 0과 1을 저장하는 최소 기억 단위인 비트 (bit)
-> - 8개의 비트를 묶어서 바이트 (byte)
-> - 기본 타입은 정해진 메모리 사용 크기 (byte) 크기로 값을 저장하는데, 바이트 크기가 클수록 표현하는 값의 범위가 큼
+>  - 0과 1을 저장하는 최소 기억 단위인 비트 (bit)
+>  - 8개의 비트를 묶어서 바이트 (byte)
 
-### 2. 정수 타입 (byte, char, short, int, long)
+- 기본 타입은 정해진 메모리 사용 크기 (byte)로 값을 저장하는데, 바이트 크기가 클수록 표현하는 값의 범위가 큼
 
-![image-20201121171914854](image/primitive_type_int.png)
+## 1.1. 정수 타입 (byte, char, short, int, long)
+
+<img src="image/primitive_type_int.png" alt="image-20201121171914854" style="zoom:67%;" />
 
 [출처] https://www.codingeek.com/java/primitive-data-types-in-java-integers-floating-point-character-and-boolean/
 
   Java는 기본적으로 정수 연산을 int 타입으로 수행한다. byte 와 short 가 int 보다는 메모리 사용 크기가 작아서 메모리를 절약할 수는 있지만, 값의 범위가 작은 편이라 연산 시에 범위를 초과하면 잘못된 결과를 얻기 쉽다.
 
-### byte 타입
+###1.1.1. byte 타입
 
 - 색상 정보 및 파일 또는 이미지 등의 이진(바이너리) 데이터를 처리할 때 주로 사용됨
 
 - 표현 할 수 있는 값의 범위는 -128 ~ 127 (-2^7 ~ 2^7 - 1) (양수가 2^7 -1 인 경우는 0이 포함되기 때문)
 
-- 범위 초과 값이 들어오면 ⇒ 컴파일 에러 (Type mismatch: cannot convert from int to byte)
+- 범위 초과 값이 들어오면 ⇒ **컴파일 에러** `(Type mismatch: cannot convert from int to byte)`
 
-- 실행 도중 저장할 수 있는 값의 
-
-  범위를 초과하면 최소값부터 다시 반복 저장됨
+- 실행 도중 저장할 수 있는 값의 **범위를 초과하면 최소값부터 다시 반복 저장됨**
 
   - byte의 경우
-    - -128부터 시작해서, 127을 넘으면 다시 -128부터 시작하게 됨
-    - 저장할 수 있는 값의 범위를 초과해서 값이 저장될 경우, 엉터리 값이 변수에 저장됨 ⇒ 쓰레기값
+  - -128부터 시작해서, 127을 넘으면 다시 -128부터 시작하게 됨
+    - 저장할 수 있는 값의 범위를 초과해서 값이 저장될 경우, 엉터리 값이 변수에 저장됨 ⇒ **쓰레기값**
 
-<img src="image/byte_msb.png" alt="image-20201121172249805" style="zoom: 33%;" />
+<img src="image/byte_msb.png" alt="image-20201121172249805" style="zoom: 60%;" />
 
 [출처] https://knowthecode.io/labs/basics-of-digitizing-data/episode-5
 
@@ -83,11 +84,11 @@
   - MSB가 0이면 양의 정수
   - MSB가 1이면 음의 정수
 
-### char 타입
+### 1.1.2. char 타입
 
-- 자바는 모든 문자를 유니코드 (Unicode)로 처리함
+- 자바는 모든 문자를 **유니코드 (Unicode)**로 처리함
 
-> 유니코드 (Unicode)
+> **유니코드 (Unicode)**
 >
 > - 세계 각국의 문자들을 코드값으로 매핑한 국제 표준 규약
 > - 하나의 문자에 대해 하나의 코드값을 부여하므로 영문 'A' 와 한글 '가' 도 하나의 코드 값을 가짐
@@ -113,13 +114,13 @@
   String str = "";
   ```
 
-### short 타입
+### 1.1.3. short 타입
 
 - 2 byte (16bit)로 표현되는 정수값을 저장할 수 있는 데이터 타입
 - 저장할 수 있는 값의 범위 : -32768 ~ 32767 (-2^15 ~ (2^15 - 1))
 - C 언어의 호환을 위해 사용되며, 비교적 자바에서는 잘 사용되지 않음
 
-### int 타입
+### 1.1.4. int 타입
 
 - 4 byte (32 bit)로 표현되는 정수값을 저장할 수 있는 데이터 타입
 - 저장할 수 있는 값의 범위 : (-2^31 ~ (2^31 - 1))
@@ -137,13 +138,13 @@ int hexNumber = 0xA; // 16진수
 - 변수에 어떤 진수로 입력을 하더라도 동일한 값이 2진수로 변환되어 저장됨
 - int타입 변수에 저장된 25
 
-![image-20201121172619032](image/int_32bit.png)
+<img src="image/int_32bit.png" alt="image-20201121172619032" style="zoom:50%;" />
 
 [출처] https://medium.com/@luischaparroc/integer-numbers-storage-in-computer-memory-47af4b59009
 
-- int가 4 byte의 크기를 가지기 때문에 32 bit로 표현할 수 있다
+- int가 **4 byte**의 크기를 가지기 때문에 32 bit로 표현할 수 있다
 
-### long 타입
+### 1.1.5. long 타입
 
 - long 타입은 8 byte (64 bit)로 표현되는 정수값을 저장할 수 있는 데이터 타입
 - 저장할 수 있는 값의 범위 : (-2^63 ~ (-2^63 - 1))
@@ -153,24 +154,33 @@ int hexNumber = 0xA; // 16진수
   - 4 byte가 정수 데이터가 아닌 8 byte 정수 데이터임을 컴파일러에게 알려주기 위한 목적
   - 안붙이면 컴파일 에러
 
-### 3. 실수 타입 (float, double)
+## 1.2. 실수 타입 (float, double)
 
 ### 실수 타입
 
 - 소수점이 있는 실수 데이터를 저장할 수 있는 타입
 
-[메모리 사용 크기에 따른 float / double](https://www.notion.so/7c529561110a4351a18b1628beb08e03)
+
+
+#### 메모리 사용 크기에 따른 float / double
+
+| 실수 타입 | 바이트 수 |
+| --------- | --------- |
+| float     | 4 byte    |
+| double    | 8 byte    |
+
+
 
 - 정수 타입과는 다른 저장 방식을 가지므로, 정수 타입보다 훨씬 더 큰 범위의 값을 저장할 수 있음
 
 - 실수는 정수와 달리 **부동 소수점 (floating-point) 방식으로 저장**됨
 
-  >  부동 소수점 (지수 : Exponent, 가수 : Mantissa)
+  >  **부동 소수점 (지수 : Exponent, 가수 : Mantissa)**
   >
   > - 가수 m 은 0 < m < 1 범위의 실수이어야 함
   > - 1.2345 ⇒ 0.12345 * 10^1 (가수는 0.12345, 지수는 1)
 
-![image-20201121172759575](image/ex.png)
+<img src="image/ex.png" alt="image-20201121172759575" style="zoom:40%;" />
 
 [출처] https://dojang.io/mod/page/view.php?id=45
 
@@ -182,11 +192,11 @@ int hexNumber = 0xA; // 16진수
 
 - **가수**를 표현하는 데 있어서, float에 비해 double이 **약 두 배의 자릿수가 배정되어 있음**
 
-- float보다 double이 더 정밀한 값을 저장할 수 있기 때문에 , 더 높은 정밀도를 요구하는 계산에서는 double을 사용해야함
+- float보다 double이 더 정밀한 값을 저장할 수 있기 때문에 , 더 높은 정밀도를 요구하는 계산에서는 **double을** 사용해야함
 
 - 자바는 실수 리터럴의 기본 타입을 double로 간주
 
-- 실수 리터럴을 float 타입 변수에 그냥 저장할 수 없음!!!
+- **실수 리터럴을 float 타입 변수에 그냥 저장할 수 없음!!!**
 
   - 실수 리터럴을 float 타입에 저장하려면, 리터럴 뒤에 소문자 f 나 대문자 F를 붙여야 함
 
@@ -205,7 +215,7 @@ int hexNumber = 0xA; // 16진수
   double var9 = 2e-3;  // 0.002
   ```
 
-### 4. 논리 타입 (boolean)
+##1.3. 논리 타입 (boolean)
 
 ### 논리 타입 (boolean)
 
@@ -215,7 +225,7 @@ int hexNumber = 0xA; // 16진수
 
 
 
-## 2. 프리미티브 타입과 레퍼런스 타입
+# 2. 프리미티브(Primitive) 타입과 레퍼런스(Reference) 타입
 
 ### 1. 기본 타입 (원시 타입 :  primitive type)
 
@@ -226,9 +236,11 @@ int hexNumber = 0xA; // 16진수
 - 객체 (Object)의 번지를 참조하는 타입 (배열, 열거, 클래스, 인터페이스)
 - 주소를 통해 객체를 참조한다
 
-![image-20201121173410554](image/java_type.png)
+<img src="image/java_type.png" alt="image-20201121173410554" style="zoom:80%;" />
 
-**기본 타입과 참조 타입으로 선언된 변수의 차이 (참조 타입 : 번지를 통해 객체를 참조한다)**
+[출처] : [이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권](https://www.hanbit.co.kr/store/books/look.php?p_code=B1460673937) - p.138 (그림은 제가 직접 작성했습니다.)
+
+### 기본 타입과 참조 타입으로 선언된 변수의 차이 (참조 타입 : 번지를 통해 객체를 참조)
 
 - 저장되는 값이 무엇인가
 
@@ -236,25 +248,29 @@ int hexNumber = 0xA; // 16진수
 
   - 참조 타입을 이용하여 선언된 변수 ⇒ **메모리의 번지**를 값으로 가짐
 
-    ![image-20201121173434367](image/reference.png)
+    <img src="image/reference.png" alt="image-20201121173434367" style="zoom:80%;" />
 
-    기본 타입과 참조 타입으로 선언된 변수의 차이
+    [출처] : [이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권](https://www.hanbit.co.kr/store/books/look.php?p_code=B1460673937) - p.139 (그림은 제가 직접 작성했습니다.)
+    
+    
 
-### 2. 메모리 사용 영역
+## 1. 메모리 사용 영역
 
-### JVM이 사용하는 메모리 영역 (Runtime Data Area) - 운영체제에서 할당 받음
+#### JVM이 사용하는 메모리 영역 (Runtime Data Area) - 운영체제에서 할당 받음
 
-![image-20201121173602138](image/jvm_memory.png)
+<img src="image/jvm_memory.png" alt="image-20201121173602138" style="zoom:67%;" />
 
-#### 3. 참조 변수의 ==, != 연산
+[출처] : [이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권](https://www.hanbit.co.kr/store/books/look.php?p_code=B1460673937) - p.140 (그림은 제가 직접 작성했습니다.)
 
-### 참조 타입 변수들 간의 ==, !=연산은 동일한 객체를 참조하는지, 다른 객체를 참조하는지 알아볼 때 사용
+##2. 참조 변수의 ==, != 연산
+
+#### 참조 타입 변수들 간의 ==, !=연산은 동일한 객체를 참조하는지, 다른 객체를 참조하는지 알아볼 때 사용
 
 - 참조 타입 변수의 값 ⇒ **힙 영역의 객체 주소**
   - 결국 **주소 값의 비교**
   - 동일한 주소 값을 가진다 = 동일한 객체를 참조한다
 
-#### 4. null과 NullPointerException
+### null과 NullPointerException
 
 - 참조 타입 변수 → 힙 영역의 객체를 참조하지 않는다는 뜻으로 null 값을 가질 수 있음
 
@@ -274,10 +290,12 @@ int hexNumber = 0xA; // 16진수
   String str = null;
   System.out.println("문자의 길이 : " + str.length()); // NullPointerException 발생 (str 변수가 참조하는 String 객체가 없기 때문)
   ```
+  
+  
 
-#### 5. String 타입
+##3. String 타입
 
-### 문자열 저장
+#### 문자열 저장
 
 ```java
 String 변수;
@@ -289,7 +307,9 @@ String name2 = "영희";
 // name == name2 는 true
 ```
 
-![image-20201121173807363](image/string.png)
+<img src="image/string.png" alt="image-20201121173807363" style="zoom:50%;" />
+
+[출처] : [이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권](https://www.hanbit.co.kr/store/books/look.php?p_code=B1460673937) - p.146 (그림은 제가 직접 작성했습니다.)
 
 - 변수는 **Stack 영역**에 생성
 - 문자열 리터럴은 **Heap Area**에 **String 객체로 생성**됨
