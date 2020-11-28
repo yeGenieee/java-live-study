@@ -57,7 +57,7 @@ x == y
 2. 비교 연산자 ⇒ 결과값이 논리 타입 (boolean)
 3. 논리 연산자 ⇒ 결과값이 논리 타입 (boolean)
 
-<img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128135923519.png" alt="image-20201128135923519" style="zoom:50%;" />
+<img src="image/operator_type.png" alt="image-20201128135923519" style="zoom:50%;" />
 
 [출처] : https://medium.com/@katekim720/%EC%97%B0%EC%82%B0%EC%9E%90%EB%B6%80%ED%84%B0-%EC%A1%B0%EA%B1%B4-%EB%B0%98%EB%B3%B5%EB%AC%B8%EA%B9%8C%EC%A7%80-3d5cec6513d4
 
@@ -294,7 +294,7 @@ x == y
 
 - 피연산자가 정수 타입 ⇒ 비트 논리 연산자
 
-  <img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128140758704.png" alt="image-20201128140758704" style="zoom:67%;" />
+  <img src="image/bit_false_true_operator.png" alt="image-20201128140758704" style="zoom:67%;" />
 
   [출처] : https://medium.com/@katekim720/%EC%97%B0%EC%82%B0%EC%9E%90%EB%B6%80%ED%84%B0-%EC%A1%B0%EA%B1%B4-%EB%B0%98%EB%B3%B5%EB%AC%B8%EA%B9%8C%EC%A7%80-3d5cec6513d4
 
@@ -302,7 +302,7 @@ x == y
 
 - 예제 : 45와 25를 비트 논리 연산
 
-  <img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128140856229.png" alt="image-20201128140856229" style="zoom:50%;" />
+  <img src="image/bit_operator_ex2.png" alt="image-20201128140856229" style="zoom:50%;" />
 
 - 비트 연산자는 피연산자를 **int 타입(4 byte)**으로 자동 타입 변환 후 연산을 수행
 
@@ -319,13 +319,13 @@ x == y
 
 - 정수 데이터의 비트를 좌측 또는 우측으로 밀어서 이동시키는 연산자
 
-  <img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128140930315.png" alt="image-20201128140930315" style="zoom:50%;" />
+  <img src="image/bit_shift_operator.png" alt="image-20201128140930315" style="zoom:50%;" />
 
   [출처] : https://medium.com/@katekim720/%EC%97%B0%EC%82%B0%EC%9E%90%EB%B6%80%ED%84%B0-%EC%A1%B0%EA%B1%B4-%EB%B0%98%EB%B3%B5%EB%AC%B8%EA%B9%8C%EC%A7%80-3d5cec6513d4
 
 - 비트 이동 연산자 예제
 
-  <img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128141043725.png" alt="image-20201128141043725" style="zoom:50%;" />
+  <img src="image/bit_operator_ex.png" alt="image-20201128141043725" style="zoom:50%;" />
 
 # 3. 관계 연산자
 
@@ -369,7 +369,7 @@ String strVar2 = "값1";
 String strVar3 = new String("값1");
 ```
 
-<img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128141256297.png" alt="image-20201128141256297" style="zoom:50%;" />
+<img src="image/string_operator.png" alt="image-20201128141256297" style="zoom:50%;" />
 
 [출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.90 (그림은 제가 직접 그렸습니다)
 
@@ -389,7 +389,7 @@ strVar2 == strVar3 // false
 - 논리곱, 논리합, 배타적 논리합, 논리 부정 연산을 수행
 - 피연산자로 boolean 타입만 사용 가능
 
-<img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128141504320.png" alt="image-20201128141504320" style="zoom:50%;" />
+<img src="image/true_false_operator.png" alt="image-20201128141504320" style="zoom:50%;" />
 
 [출처] : https://medium.com/@katekim720/%EC%97%B0%EC%82%B0%EC%9E%90%EB%B6%80%ED%84%B0-%EC%A1%B0%EA%B1%B4-%EB%B0%98%EB%B3%B5%EB%AC%B8%EA%B9%8C%EC%A7%80-3d5cec6513d4
 
@@ -440,7 +440,7 @@ strVar2 == strVar3 // false
 - 연산자들 중 **가장 낮은 연산 순위** ⇒ 제일 마지막에 수행됨
 - **연산 진행 방향이 오른쪽에서 왼쪽**
 
-<img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128141614546.png" alt="image-20201128141614546" style="zoom:50%;" />
+<img src="image/assignment_operator.png" alt="image-20201128141614546" style="zoom:50%;" />
 
 [출처] : https://medium.com/@katekim720/%EC%97%B0%EC%82%B0%EC%9E%90%EB%B6%80%ED%84%B0-%EC%A1%B0%EA%B1%B4-%EB%B0%98%EB%B3%B5%EB%AC%B8%EA%B9%8C%EC%A7%80-3d5cec6513d4
 
@@ -481,7 +481,7 @@ Runnable r = ()-> System.out.print("Run method")
 - 세 개의 피연산자를 필요로 하는 연산자
 - 앞의 ? 조건식에 따라 콜론 (:) 앞 뒤의 피연산자가 선택됨 ⇒ **조건 연산식**
 
-<img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128142239629.png" alt="image-20201128142239629" style="zoom:50%;" />
+<img src="image/ternaryOperator.png" alt="image-20201128142239629" style="zoom:50%;" />
 
 [출처] : https://www.geeksforgeeks.org/java-ternary-operator-with-examples/
 
@@ -511,7 +511,7 @@ if (score > 90) {
 
 ### 단항 연산자 (++,- -, ~ , !), 부호 연산자 (+,-), 대입 연산자 (=, += ...) 는 오른쪽에서 왼쪽으로 연산됨
 
-<img src="/Users/yegenieee/Library/Application Support/typora-user-images/image-20201128141925744.png" alt="image-20201128141925744" style="zoom:50%;" />
+<img src="image/operator.png" alt="image-20201128141925744" style="zoom:50%;" />
 
 [출처] : http://adminschool.net/doku.php?id=study:java:javachobo:ch3
 
