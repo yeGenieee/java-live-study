@@ -255,6 +255,8 @@ public class CarExample {
 
 <img src="image/heap.png" alt="image-20201219121210239" style="zoom:50%;" />
 
+[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.194
+
 ### new
 
 - 클래스로부터 객체를 생성시키는 연산자
@@ -282,7 +284,7 @@ public class CarExample {
 
 <img src="image/new.png" alt="image-20201219121902928" style="zoom:60%;" />
 
-
+[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.194
 
 ### 클래스 선언부터 생성까지의 예제
 
@@ -313,7 +315,7 @@ public class StudentExample {
 
 <img src="image/image-20201219122351206.png" alt="image-20201219122351206" style="zoom:60%;" />
 
-
+[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.196
 
 # 3. 메소드 정의하는 방법
 
@@ -895,6 +897,8 @@ yourCar.setSpeed(80);
 
 ![image-20201219115822839](image/image-20201219115822839.png)
 
+[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.234
+
 - 인스턴스 필드 : 객체마다 따로 존재
 
 - 인스턴스 메소드 : 메소드 영역에 저장되고 공유 (객체마다 존재 X)
@@ -1076,3 +1080,8 @@ public class CarExample {
  */
 ```
 
+
+
+## Reference
+
+- 신용권, 『이것이 자바다』, 한빛미디어(2015), p.186 ~ p.235
