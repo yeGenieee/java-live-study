@@ -515,7 +515,7 @@ if (score > 90) {
 
 [출처] : http://adminschool.net/doku.php?id=study:java:javachobo:ch3
 
-# 10. Java 13 에서의 Switch
+# 10. Java 13 에서의 Switch Operator
 
 ### 원래 익히 알고 있던 switch문
 
@@ -584,3 +584,25 @@ public String getGrade(int score) {
 4. https://qastack.kr/programming/15146052/what-does-the-arrow-operator-do-in-java
 5. https://www.geeksforgeeks.org/java-ternary-operator-with-examples/
 6. https://medium.com/@katekim720/%EC%97%B0%EC%82%B0%EC%9E%90%EB%B6%80%ED%84%B0-%EC%A1%B0%EA%B1%B4-%EB%B0%98%EB%B3%B5%EB%AC%B8%EA%B9%8C%EC%A7%80-3d5cec6513d4
+
+
+
+
+
+## [3주차] 라이브 강의
+
+- 중간값 구하기
+
+  ```java
+  public static void main(String[] args) {
+  		int start = 2_000_000_000;
+  		int end = 2_100_000_000;
+  		
+  		int mid = (start + end) / 2; // 오버플로우 발생의 가능성이 있음
+  		int mid = start + (end - start) / 2;
+  		int mid = (start + end) >>> 1;
+  }
+  ```
+
+  
+
