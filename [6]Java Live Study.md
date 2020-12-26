@@ -569,6 +569,63 @@ public class AnimalExample {
 final 타입 필드 [=초기값];
 ```
 
+- 필드 선언 시에 초기값을 준다
+- 생성자에서 초기값을 준다
+
+### 예제
+
+```java
+/*final 필드 예제 */
+public class Person {
+    final String nation = "Korea";
+    final String ssn;
+    String name;
+
+    public Person(String ssn, String name) {
+        this.ssn = ssn;
+        this.name = name;
+    }
+}
+
+/* final 필드 테스트 */
+public class PersonExample {
+    public static void main(String[] args) {
+        Person p1 = new Person("123456-1234567", "자바");
+
+        System.out.println(p1.nation);
+        System.out.println(p1.ssn);
+        System.out.println(p1.name);
+
+        p1.nation = "usa"; // final 필드는 값 수정 불가능
+        p1.ssn = "987654-9876543"; // final 필드는 값 수정 불가능
+        p1.name = "자바스크립트";
+    }
+}
+```
+
+### 상수 (static final)
+
+- 객체마다 저장되지 않고, 클래스에만 포함되는 상수
+- 한 번 초기값이 저장되면 변경 불가
+
+```java
+static final 타입 상수 [=초기값];
+```
+
+### 예제
+
+```java
+/* 상수 예제 */
+public class Earth {
+    static final double EARTH_RADIUS = 6400;
+    static final double EARTH_SURFACE_AREA;
+
+    static {
+        EARTH_SURFACE_AREA = 4 * Math.PI * EARTH_RADIUS * EARTH_RADIUS;
+    }
+}
+```
+
 
 
 # 7. Object 클래스
