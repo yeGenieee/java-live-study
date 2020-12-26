@@ -155,6 +155,8 @@ super.부모메소드();
 
 <img src="image/image-20201226123012929.png" alt="image-20201226123012929" style="zoom:50%;" />
 
+[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.298
+
 ## 2. super()
 
 ### 부모의 생성자를 호출하는 역할
@@ -170,6 +172,8 @@ DmbCellPhone dmbCellPhone = new DmbCellPhone();
 ```
 
 <img src="image/image-20201226123358174.png" alt="image-20201226123358174" style="zoom:50%;" />
+
+[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.292
 
 - 부모인 CellPhone 객체가 먼저 생성되고, DmbCellPhone 객체가 생성됨
 
@@ -285,6 +289,8 @@ public class SuperSonicAirplaneExample {
 2. 자식 객체에서 오버라이딩 된 메소드 호출하면 오버라이딩된 자식 메소드가 호출됨
 
 <img src="image/image-20201226122745313.png" alt="image-20201226122745313" style="zoom:50%;" />
+
+[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.296
 
 ### 메소드 오버라이딩 규칙
 
@@ -465,7 +471,7 @@ public class PhoneExample {
 
 - 자식 클래스에서 추상 메소드를 반드시 오버라이딩해서 실행 내용을 작성해야 한다. 그렇지 않으면 컴파일 에러가 발생한다.
 
-##2 .선언 방법
+## 2 .선언 방법
 
 ```java
 [public | protected] abstract 리턴타입 메소드명(매개변수, ...);
@@ -561,7 +567,9 @@ public class AnimalExample {
 
 # 6. final 키워드
 
-### final 필드
+- 클래스, 필드, 메소드 선언 시에 사용하여 해당 선언이 최종 상태이고, 결코 수정될 수 없음을 뜻하는 키워드
+
+## 1. final 필드
 
 - 초기값이 저장되면 이것이 최종적인 값이 되어서 프로그램 실행 도중에 수정이 불가능한 필드
 
@@ -603,7 +611,7 @@ public class PersonExample {
 }
 ```
 
-### 상수 (static final)
+## 2. 상수 (static final)
 
 - 객체마다 저장되지 않고, 클래스에만 포함되는 상수
 - 한 번 초기값이 저장되면 변경 불가
@@ -626,7 +634,71 @@ public class Earth {
 }
 ```
 
+## 3. final 클래스와 final 메소드
 
+### 1. 상속할 수 없는 final 클래스
+
+- 최종적인 클래스 = 상속할 수 없는 클래스
+- 부모 클래스가 될 수 없어 자식 클래스를 만들 수 없게 됨
+
+``` java
+public final class 클래스 { ... }
+```
+
+#### 예제
+
+```java
+public final class Member {}
+```
+
+- 아래와 같이, 상속 할 수 없다
+
+```java
+public class VeryVeryImportantMember extends Member {} // 클래스 선언 시 final 키워드를 붙여서 상속할 수 없음
+```
+
+### 2. 오버라이딩할 수 없는 final 메소드
+
+- 최종적인 메소드 = 오버라이딩 할 수 없는 메소드
+- 부모 클래스를 상속해서 자식 클래스를 선언할 때 부모 클래스에 선언된 final 메소드는 자식 클래스에서 재정의 할 수 없음
+
+```java
+public final 리턴타입 메소드([매개변수,...]) { ... }
+```
+
+#### 예제
+
+```java
+/*7.5.2 오버라이딩할 수 없는 final 메소드 */
+public class Car {
+    public int speed;
+
+    public void speedUp() {
+        speed += 1;
+    }
+
+    public final void stop() {
+        System.out.println("차를 멈춤");
+        speed = 0;
+    }
+}
+```
+
+- 아래와 같이, 오버라이딩 할 수 없다
+
+```java
+public class SportsCar extends Car {
+    @Override
+    public void speedUp() {
+        speed += 10;
+    }
+
+    @Override
+    public void stop() { // 오버라이딩 불가능 (부모 메소드인 Car의 stop 메소드를 final로 선언했기 때문)
+
+    }
+}
+```
 
 # 7. Object 클래스
 
@@ -636,3 +708,13 @@ public class Earth {
 - 자바의 모든 클래스는 Object 클래스의 자식이거나 자손 클래스
 - Object 클래스는 필드가 없고, 메소드들로 구성되어 있음
 - Object클래스의 메소드들은 모든 클래스가 Object를 상속하기 때문에 모든 클래스에서 사용이 가능
+
+
+
+
+
+## Reference
+
+- 신용권, 『이것이 자바다』, 한빛미디어(2015), p.245 ~ p.247
+- 신용권, 『이것이 자바다』, 한빛미디어(2015), p.290 ~ p.337
+- 신용권, 『이것이 자바다』, 한빛미디어(2015), p.457 ~ p.458
