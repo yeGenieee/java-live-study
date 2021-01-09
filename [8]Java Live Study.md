@@ -983,12 +983,12 @@ public interface ParentInterface {
 
 # 6. 인터페이스의 static 메소드
 
-##1. 정적 메소드 (static method) - Java 8에서 허용된 부분
+## 1. 정적 메소드 (static method) - Java 8에서 허용된 부분
 
 - 자바 8에서 추가된 **인터페이스의 새로운 멤버**
 - default method와는 달리 **객체가 없어도 인터페이스만으로 호출 할 수 있다**
 
-##2. static method 선언 방식
+## 2. static method 선언 방식
 
 - 형태는 **클래스의 정적 메소드**와 동일하다
 
@@ -1177,7 +1177,480 @@ public class CustomClass implements CustomInterface {
    */
   ```
 
-   
+
+
+# +) interface 타입 변환과 다형성
+
+#### 인터페이스도 다형성을 구현하는 기술이 사용됨
+
+>  **다형성 (polymorphism)**
+>
+> - 하나의 타입에 대입되는 객체에 따라서, 실행 결과가  다양한 형태로 나오는 성질
+> - 부모 타입에 어떤 자식 객체를 대입하느냐에 따라 실행 결과가 달라지듯이, 인터페이스 타입에 어떤 구현 객체를 대입하느냐에 따라 실행 결과가 달라짐
+> - 상속과 인터페이스 모두 다형성을 구현하는 기술
+> - 상속
+>   - 같은 종류의 하위 클래스를 만드는 기술
+> - 인터페이스
+>   - 사용 방법이 동일한 클래스를 만드는 기술
+
+## 1. 인터페이스의 다형성
+
+- 개발 시, 인터페이스를 사용해서 메소드를 호출하도록 코딩하면
+
+- 구현 객체를 교체하는 것은 매우 빠르게 교체 가능하다
+
+  - 프로그램 소스 코드는 변함이 없는데, 구현 객체를 교체해서 프로그램 실행 결과가 다양해짐
+
+- Q. `A` 클래스를 이용해서 프로그램을 개발하는데, 개발 완료 후 `B` 클래스로 바꾸기로 했을 때, 어떻게 해야 할까?
+
+  - 그런데, `B` 클래스의 메소드는 `A` 클래스의 메소드와 이름, 매개 변수가 다르다.
+
+- 이렇게 되면, 코드 상에서 `A` 클래스의 메소드가 사용된 곳을 찾아 B 클래스의 메소드로 변경해야 함
+
+  - `A` 클래스와 `B` 클래스의 메소드 선언부가 동일하다면 어떻게 될까?
+    - **인터페이스를 작성하고 `A`, `B` 클래스는 구현 클래스로 작성하면 되지 않을까?**
+
+  <img src="image/interface_polymorphism.png" alt="image-20210109123731466" style="zoom:50%;" />
+
+  *[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.363*
+
+  - `A` 클래스와 `B` 클래스 모두 ` I` 인터페이스를 이용해서 클래스를 구현하고,
+    - **다른 클래스를 사용해야 할 경우, 구현 객체를 교체한다**
+
+## 2. 인터페이스 매개 변수의 다형성
+
+- 인터페이스 타입으로 매개 변수를 선언하면 메소드 호출 시,
+
+  - 매개 값으로 여러 가지 종류의 구현 객체를 줄 수 있기 때문에 메소드 실행 결과가 다양하게 나온다
+
+    <img src="image/interface_parameter_polymorhism.png" alt="image-20210109124010682" style="zoom:50%;" />
+
+    *[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.364*
+
+- `useRemoteControl()` 메소드의 매개 변수가 `RemoteControl` 타입
+
+  - 매개값으로 `Television` 객체 or `Audio` 객체를 선택적으로 줄 수 있음
+
+## 3. 자동 타입 변환 (Promotion)
+
+#### 구현 객체가 인터페이스 타입으로 변환되는 것
+
+- 자동 타입 변환 (Promotion) - **실행 도중 자동적으로 타입 변환이 일어나는 것**
+
+  <img src="image/interface_promotion.png" alt="image-20210109124147311" style="zoom:65%;" />
+
+  *[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.364*
+
+- 인터페이스 구현 클래스를 상속해서 자식 클래스를 만들었다면
+
+  - 자식 객체도 인터페이스 타입으로 자동 변환시킬 수 있다
+
+- 자동 타입 변환을 이용하여,
+
+  - **필드의 다형성**
+
+  - **매개 변수의 다형성**
+
+    을 구현할 수 있음
+
+## 4. 필드의 다형성
+
+#### 필드의 다형성 예제
+
+- 설계 시, 필드 타입으로 타이어 인터페이스를 설계하면
+
+  → 필드 값으로 한국 타이어 또는 금호 타이어 객체를 대입할 수 있다
+
+  → 자동 타입 변환이 일어나므로 아무런 문제가 없다
+
+- `Tire` 인터페이스
+
+```java
+// 인터페이스
+public interface Tire {
+    public void roll(); // roll() 메소드 호출 방법 설명
+}
+```
+
+- `Tire` 인터페이스의 구현클래스 `HankookTire`
+
+```java
+// 구현 클래스
+public class HankookTire implements Tire {
+    @Override // Tire 인터페이스 구현
+    public void roll() {
+        System.out.println("한국 타이어가 굴러갑니다.");
+    }
+}
+```
+
+- `Tire` 인터페이스의 구현 클래스 `KumhoTire`
+
+```java
+// 구현 클래스
+public class KumhoTire implements Tire {
+    @Override
+    public void roll() {
+        System.out.println("금호 타이어가 굴러갑니다.");
+    }
+}
+```
+
+- `Car` 클래스
+
+```java
+// 필드 다형성
+public class Car {
+    // 인터페이스 타입 필드 선언과 초기 구현 객체 대입 (필드 타입으로 타이어 인터페이스를 선언)
+    Tire frontLeftTire = new HankookTire();
+    Tire frontRightTire = new HankookTire();
+    Tire backLeftTire =  new HankookTire();
+    Tire backRightTire = new HankookTire();
+
+    // 인터피에스에서 설명된 roll() 메소드 호출
+    void run() {
+        frontLeftTire.roll();
+        frontRightTire.roll();
+        backLeftTire.roll();
+        backRightTire.roll();
+    }
+}
+```
+
+- `CarExample` 클래스
+
+```java
+// 필드 다형성 테스트
+public class CarExample {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+
+        myCar.run();
+
+        // 타이어 교체
+        myCar.frontLeftTire = new KumhoTire();
+        myCar.frontRightTire = new KumhoTire();
+
+        myCar.run();
+    }
+}
+```
+
+## 5. 인터페이스 배열로 구현 객체 관리
+
+- 위의  `Car` 클래스에서 4개의 타이어 필드를 인터페이스로 각각 선언했지만, 아래와 같이 인터페이스 배열로 관리할 수도 있다
+
+```java
+Tire[] tires = {
+		new HankookTire(),
+		new HankookTire(),
+		new HankookTire(),
+		new HankookTire()
+};
+```
+
+- 각 `Tire`들이 인덱스로 표현되므로, 대입이나 제어문에서 활용하기 좋다
+
+- ```
+  tires
+  ```
+
+  ####  **배열의 각 항목은 `Tire` 인터페이스 타입**
+
+  - 구현 객체인 `KumhoTire` 를 대입하면, 자동으로 타입 변환이 발생한다
+
+    ```java
+    tires[1] = new KumhoTire(); // 자동으로 타입 변환 (Promotion)
+    ```
+
+### 구현 객체를 배열로 관리해서 얻는 이점
+
+- 제어문에서 가장 큰 이점이 있다 
+
+- 전체 타이어의 `roll()` 메소드를 호출하는 `Car` 클래스의 `run()` 메소드를 아래와 같이 수정할 수 있다
+
+  ```java
+  void run() {
+  		for (Tire tire : tires) {
+  				tire.roll();
+  		}
+  }
+  ```
+
+-  `Car` 클래스의 타이어 필드를 **배열**로 수정한 예제
+
+```java
+// 인터페이스 배열로 구현 객체 관리
+public class Car {
+    Tire[] tires = {
+        new HankookTire(),
+        new HankookTire(),
+        new HankookTire(),
+        new HankookTire()
+    };
+
+    void run() {
+        for (Tire tire : tires) {
+            tire.roll();
+        }
+    }
+}
+```
+
+- `Car` 클래스를 수정하여 `CarExample`도 수정
+
+```java
+// CarExample 클래스도 수정
+public class CarExample {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+
+        myCar.run();
+
+        myCar.tires[0] = new KumhoTire();
+        myCar.tires[1] = new KumhoTire();
+
+        myCar.run();
+    }
+}
+```
+
+## 6. 매개 변수의 다형성
+
+- 메소드를 호출할 때도 많이 발생하는 자동 타입 변환
+- 매개값을 다양화 하기 위해
+  - 상속
+    - 매개 변수를 부모 타입으로 선언 & 호출 시 자식 객체를 대입
+  - 인터페이스
+    - 매개 변수를 인터페이스 타입으로 선언 & 호출 시 구현 객체를 대입
+
+```java
+public class Driver {
+		public void drive(Vehicle vehicle) {
+				vehicle.run(); // 구현 객체의 run() 메소드가 실행됨
+		}
+}
+public interface Vehicle {
+		public void run();
+}
+```
+
+<img src="image/paramter_polymorphism.png" alt="image-20210109124655917" style="zoom:67%;" />
+
+*[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.371*
+
+- `drive()` 메소드는 `Vehicle` 타입을 매개 변수로  선언했지만,`Vehicle`을 구현한 `Bus` 객체가 매개 값으로 사용되면 자동 타입 변환이 발생한다
+
+- 매개 변수의 타입이 **인터페이스일 경우, 어떠한 구현 객체도 매개값으로 사용할 수 있고,**
+  - 어떤 구현 객체가 제공되느냐에 따라 메소드의 실행 결과는 다양해질 수 있음
+  - **매개 변수의 다형성**
+
+#### 매개 변수의 다형성 예제 (매개 변수의 인터페이스화)
+
+- `Driver` 클래스
+
+```java
+// 매개 변수의 인터페이스화
+public class Driver {
+    public void drive(Vehicle vehicle) {
+        vehicle.run();
+    }
+}
+```
+
+- `Vehicle` 인터페이스
+
+```java
+// 인터페이스
+public interface Vehicle {
+    public void run();
+}
+```
+
+- `Vehicle` 인터페이스를 구현한 `Bus` 클래스
+
+```java
+// 구현 클래스
+public class Bus implements Vehicle {
+    @Override
+    public void run() {
+        System.out.println("버스가 달립니다.");
+    }
+}
+```
+
+- `Vehicle` 인터페이스를 구현한 `Taxi` 클래스
+
+```java
+// 구현 클래스
+public class Taxi implements Vehicle {
+    @Override
+    public void run() {
+        System.out.println("택시가 달립니다.");
+    }
+}
+```
+
+- 매개 변수의 다형성을 테스트할 `DriverExample` 클래스
+
+```java
+// 매개 변수의 다형성 테스트
+public class DriverExample {
+    public static void main(String[] args) {
+        Driver driver = new Driver();
+
+        Bus bus = new Bus();
+        Taxi taxi = new Taxi();
+
+        driver.drive(bus); // 자동 타입 변환 : Vehicle vehicle = bus;
+        driver.drive(taxi); // 자동 타입 변환 : Vehicle vehicle = taxi;
+    }
+}
+/* Result
+버스가 달립니다.
+택시가 달립니다.
+ */
+```
+
+
+
+## 7. 강제 타입 변환 (Casting)
+
+- 구현 객체가 인터페이스 타입으로 자동 변환하면
+
+  - 인터페이스에 선언된 메소드만 사용 가능하다는 제약 사항
+
+- ex)
+
+  - 인터페이스에는 3 개의 메소드가 선언 & 클래스에는 다섯 개의 메소드가 선언되어 있다면
+
+    - 인터페이스로 호출 가능한 메소드는 3개이다
+
+    <img src="image/casting.png" alt="image-20210109125213504" style="zoom:50%;" />
+
+    *[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.374*
+
+- 하지만, 경우에 따라 구현 클래스에 선언된 필드와 메소드를 사용해야 하는 경우도 있다
+
+  - 어떻게 사용하는지?
+
+    - **강제 타입 변환**으로 구현 클래스 타입으로 변환하여 사용한다
+
+      <img src="image/casting_example.png" alt="image-20210109125239359" style="zoom: 67%;" />
+
+<img src="image/casting_example2.png" alt="image-20210109125320252" style="zoom:50%;" />
+
+*[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.374*
+
+#### 강제 타입 변환 예제
+
+- `Vehicle` 인터페이스
+
+```java
+// 인터페이스
+public interface Vehicle {
+    public void run();
+}
+```
+
+- `Vehicle` 인터페이스를 구현한 `Bus` 클래스
+
+```java
+// 구현 클래스
+public class Bus implements Vehicle {
+    @Override
+    public void run() {
+        System.out.println("버스가 달립니다.");
+    }
+
+    public void checkFare() {
+        System.out.println("승차요금을 체크합니다.");
+    }
+}
+```
+
+- 강제 타입 변환을 테스트할 `DriverExample` 클래스
+
+```java
+// 강제 타입 변환
+public class VehicleExample {
+    public static void main(String[] args) {
+        Vehicle vehicle = new Bus();
+
+        vehicle.run();
+        // vehicle.checkFare(); // Vehicle 인터페이스에는 checkFare() 가 없어서 호출 불가
+
+        Bus bus = (Bus) vehicle; // 강제 타입 변환
+
+        bus.run();
+        bus.checkFare(); // Bus 클래스에는 checkFare()가 있음
+    }
+}
+/* Result
+버스가 달립니다.
+버스가 달립니다.
+승차요금을 체크합니다.
+ */
+```
+
+
+
+## 8. 객체 타입 확인 (instanceof)
+
+#### 강제 타입 변환 : 구현 객체가 인터페이스 타입으로 변환되어 있는 상태에서 가능
+
+- 그러나 어떤 구현 객체가 변환되어 있는지 알 수 없는 상태에서 무작정 변환을 할 경우
+
+  - `ClassCastException` 이 발생할 수 있다
+
+    ```java
+    Vehicle vehicle = new Taxi();
+    Bus bus = (Bus) vehicle;
+    // ClassCastException 발생
+    ```
+
+  - 메소드의 매개 변수가 인터페이스로 선언된 경우, 메소드를 호출할 때 다양한 구현 객체들을 매개값으로 지정할 수 있다 **(매개 변수의 다형성)**
+
+    - 어떤 구현 객체가 지정될 지 모르는 상황에서 다음과 같이 매개값을 `Bus`로 강제 타입 변환하면 `ClassCastException`이 발생 할 수 있다
+
+      ```java
+      public void drive(Vehicle vehicle) {
+      		Bus bus = (Bus) vehicle;
+      		bus.checkFare();
+      		vehicle.run();
+      }
+      ```
+
+  - 그러면, 어떤 구현 객체가 인터페이스 타입으로 변환되었는지 확인하는 방법은 없는걸까?
+
+    - `instanceof` 이용하면 됨 - `Vehicle` 인터페이스 타입으로 변환된 객체가 `Bus`인지 확인하면 된다
+
+      ```java
+      if (vehicle instanceof Bus) {
+      		Bus bus = (Bus) vehicle;
+      }
+      ```
+
+  #### 인터페이스 타입으로 자동 변환된 매개값을 메소드 내에서 다시 구현 클래스 타입으로 강제 타입 변환해야 한다면
+
+  → 매개값이 어떤 객체인지 **`instanceof`** 연산자로 확인하고 **안전하게 강제 타입 변환 해야한다**
+
+  ```java
+  // instanceof 로 객체 타입 확인
+  public class Driver {
+      public void drive(Vehicle vehicle) {
+          // vehicle 매개 변수가 참조하는 객체가 Bus인지 조사
+          if (vehicle instanceof Bus) {
+              Bus bus = (Bus) vehicle; // Bus 객체인 경우 안전하게 강제 타입 변환
+              bus.checkFare(); // Bus
+          }
+  
+          vehicle.run();
+      }
+  }
+  ```
+
+
 
 ## Reference
 
