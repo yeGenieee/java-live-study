@@ -1075,27 +1075,26 @@ private [static] 리턴타입 메소드명(매개변수, ...) { ... }
 
 ```java
 public interface CustomInterface {
-		
-		public abstract void method1();
-		
-		public default void method2() {
-				method4(); // default method 내 private method 호출
-				method5(); // non-static method 내 private static method 호출
-				System.out.println("default method");
-		}
-		
-		public static void method3() {
-				method5(); // static method 내 private static method 호출
-				System.out.println("static method");
-		}
-		
-		private void method4() {
-				System.out.println("private method");
-		}
-		
-		private static void method5() {
-				System.out.println("private static method");
-		}
+  public abstract void method1();
+  
+  public default void method2() {
+    method4(); // default method 내 private method 호출
+    method5(); // non-static method 내 private static method 호출
+    System.out.println("default method");
+  }
+  
+  public static void method3() {
+    method5(); // static method 내 private static method 호출
+    System.out.println("static method");
+  }
+  
+  private void method4() {
+    System.out.println("private method");
+	}
+  
+  private static void method5() {
+    System.out.println("private static method");
+	}
 }
 ```
 
@@ -1103,17 +1102,17 @@ public interface CustomInterface {
 
 ```java
 public class CustomClass implements CustomInterface {
-		@Override
-		public void method1() {
-				System.out.println("abstract method");
-		}
-		
-		public static void main(String[] args) {
-				CustomInterface instance = new CustomClass();
-				instance.method1();
-				instance.method2();
-				CustomInterface.method3();
-		}
+  @Override
+  public void method1() {
+    System.out.println("abstract method");
+  }
+  
+  public static void main(String[] args) {
+    CustomInterface instance = new CustomClass();
+    instance.method1();
+    instance.method2();
+    CustomInterface.method3();
+  }
 }
 
 // Output
@@ -1141,19 +1140,18 @@ public class CustomClass implements CustomInterface {
   import java.util.stream.IntStream;
   
   public interface CustomCalculator {
-  		default int addEvenNumbers(int... nums) {
-  				return add(n -> n % 2 == 0, nums);
-  		}
-  		
-  		default int addOddNumbers(int... nums) {
-  				return add(n -> n % 2 != 0, nums);
-  		}
-  		
-  		private int add(IntPredicate predicate, int... nums) {
-  				return IntStream.of(nums)
-  												.filters(predicate)
-  												.sum();
-  		}
+    default int addEvenNumbers(int... nums) {
+      return add(n -> n % 2 == 0, nums);
+  	}
+    
+    default int addOddNumbers(int... nums) {
+      return add(n -> n % 2 != 0, nums);
+  	}
+    private int add(IntPredicate predicate, int... nums) {
+      return IntStream.of(nums)
+  										.filters(predicate)
+  										.sum();
+    }
   }
   ```
 
@@ -1161,15 +1159,15 @@ public class CustomClass implements CustomInterface {
 
   ```java
   public class Main implements CustomCalculator {
-  		public static void main(String[] args) {
-  				CustomCalculator demo = new Main();
-  				
-  				int sumOfEvens = demo.addEvenNumbers(1,2,3,4,5,6,7,8,9);
-  				System.out.println(sumOfEvens);
-  				
-  				int sumOfOdds = demo.addOddNumbers(1,2,3,4,5,6,7,8,9);
-  				System.out.println(sumOfOdds);
-  		}
+    public static void main(String[] args) {
+      CustomCalculator demo = new Main();
+      
+      int sumOfEvens = demo.addEvenNumbers(1,2,3,4,5,6,7,8,9);
+      System.out.println(sumOfEvens);
+      
+      int sumOfOdds = demo.addOddNumbers(1,2,3,4,5,6,7,8,9);
+      System.out.println(sumOfOdds);
+    }
   }
   
   // Output
