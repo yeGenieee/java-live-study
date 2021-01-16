@@ -361,9 +361,9 @@ public static void main(String[] args) throws ClassNotFoundException {
 
 - 자바가 제공하는 예외의 계층 구조는 아래와 같다
 
-<img src="image/exception_hierarchy.png" alt="image-20210116124341323" style="zoom:70%;" />
+<img src="image/exception_hierarchy.png" alt="image-20210116124341323" style="zoom: 67%;" />
 
-
+[출처] : https://www.javamadesoeasy.com/2015/05/exception-handling-exception-hierarchy.html
 
 
 
@@ -373,8 +373,8 @@ public static void main(String[] args) throws ClassNotFoundException {
 
 #### 프로그램이 바로 멈추어 버리느냐, 계속 실행할 수 있느냐의 차이
 
-- Error는 Process에 영향을 준다
-- Exception은 Thread에 영향을 준다
+- **Error는 Process에 영향을 준다**
+- **Exception은 Thread에 영향을 준다**
 
 
 
@@ -398,10 +398,10 @@ public static void main(String[] args) throws ClassNotFoundException {
 
 ### 일반 예외와 실행 예외 클래스를 구별하는 방법
 
-- 일반 예외는 Exception을 상속 받지만, Runtime Exception 클래스는 상속 받지 않는 클래스들
+- **일반 예외는 Exception을 상속 받지만, Runtime Exception 클래스는 상속 받지 않는 클래스들이다**
 - 실행 예외는 Runtime Exception을 상속받은 클래스
   - Runtime Exception 역시 Exception을 상속받지만,
-  - JVM은 RuntimeException을 상속했는지 여부를 보고 실행 예외를 판단함
+  - JVM은 RuntimeException을 상속했는지 여부를 보고 실행 예외를 판단한다
 
 
 
@@ -511,8 +511,6 @@ public static void main(String[] args) throws ClassNotFoundException {
   ```
 
 ### 3.NumberFormatException
-
-[문자열 → 숫자로 변경하는 방법](https://www.notion.so/2332e9bda04547479d2b37b5afb778be)
 
 - 숫자로 변환될 수 없는 문자가 포함되어 있다면 →  `java.lang.NumberFormatException` 을 발생시킴
 
@@ -794,4 +792,7 @@ public class Account {
 ## Reference
 
 - 신용권, 『이것이 자바다』, 한빛미디어(2015), p.422 ~ p.447
-- 이상민, 『자바의 신』, 로드북(2018), p.310 ~ p.317
+- 이상민, 『자바의 신』, 로드북(2018), p.342 ~ p.373
+- https://www.scientecheasy.com/2020/09/multiple-catch-block-in-java.html/
+- https://www.scientecheasy.com/2020/09/multiple-catch-block-in-java.html/
+- https://www.javamadesoeasy.com/2015/05/exception-handling-exception-hierarchy.html
