@@ -365,6 +365,49 @@ public static void main(String[] args) throws ClassNotFoundException {
 
 [출처] : https://www.javamadesoeasy.com/2015/05/exception-handling-exception-hierarchy.html
 
+- 최상위 클래스는 Object 클래스이고, Exception 과 Error의 공통 부모 클래스인 `Throwable` 클래스가 있다. 
+
+- 다시말해서, Exception과 Error 클래스는 Throwable 클ㄹ래스를 상속받아 처리하도록 되어있다
+  - 그래서, Exception 이나 Error를 처리할 때 Throwable로 처리해도 무관하다
+- 상속 관계가 이렇게 되어 있는 이유는 Exception 이나 Error의 성격은 다르지만, 모두 동일한 이름의 메소드를 사용하여 처리할 수 있도록 하기 위함이다
+
+### Throwable 클래스
+
+- Throwable 클래스에는 아래와 같은 세 개의 생성자가 선언되어 있다
+
+#### 1. Throwable()
+
+#### 2. Throwable(String message)
+
+#### 3. Throwable(String message, Throwable cause)
+
+#### 4. Throwable(Throwable cause)
+
+- 아무런 매개 변수가 없는 생성자를 기본으로 제공한다
+- 그리고, 예외 메시지를 String으로 넘겨줄 수도 있고, 별도로 예외의 원인을 Throwable 객체로 넘겨줄 수도 있다
+
+
+
+#### Throwable 클래스에 선언되어 있고, Exception 클래스에서 오버라이딩한 메소드 중 가장 많이 사용되는 메소드
+
+1. getMessage()
+2. toString()
+3. printStackTrace()
+
+#### 1. getMessage()
+
+- 예외 메시지를 String 형태로 제공받는다
+- 예외가 출력되었을 때 어떤 예외가 발생되었는지를 확인할 때 매우 유용한 메소드
+
+#### 2. toString()
+
+- 예외 메시지를 String 형태로 제공받는다
+- getMessage() 메소드보다는 더 자세하고, 예외 클래스 이름도 같이 제공하는 메소드
+
+#### 3. printStackTrace()
+
+- 가장 첫 줄에는 예외 메시지를 출력하고, 두 번째 줄부터는 예외가 발생하게 된 메소드들의 호출 관계 (스택 트레이스) 를 출력해주는 메소드
+
 
 
 # 3. Exception과 Error의 차이
