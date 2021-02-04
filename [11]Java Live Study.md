@@ -2,7 +2,7 @@
 
 ### Enum 정의하는 방법
 
-### Enum이 제공하는 메소드 (values[] 와 valueOf())
+### Enum이 제공하는 메소드 (values() 와 valueOf())
 
 ### java.lang.Enum
 
@@ -12,7 +12,7 @@
 
 # 1. Enum 정의하는 방법
 
-## 1. 열거 타입 (Enumeration Type)
+## 1. Enum 타입 (Enumeration Type, 열거 타입)
 
 - 한정된 값만을 갖는 데이터 타입
   - 요일에 대한 데이터 (월, 화, 수, 목, 금, 토, 일)
@@ -21,68 +21,127 @@
 
 
 
-## 2. 열거 타입 선언
+## 2. Enum 타입 선언 (열거 타입 선언)
 
-- 열거 타입 소스 파일은 첫 문자를 대문자로하고 나머지는 소문자로 구성한다
+1. 열거 타입의 이름을 정하고, 열거 타입 이름으로 소스 파일 (.java)을 생성한다
 
 ```java
 public enum 열거타입이름 { ... }
 ```
 
-- 열거 타입을 선언하기 위한 키워드
+- `public enum` : 열거 타입을 선언하기 위한 키워드
 
 
 
-- 열거 상수 선언
+- 열거 타입 이름은 첫 문자를 대문자로하고 나머지는 소문자로 구성한다
+- 또한, 열거 타입 이름은 소스 파일명과 대소문자가 모두 일치해야 한다
+
+
+
+2. 열거 상수 선언하기
 
 ```java
-public enum Week  { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, ... }
+public enum Week  { 
+  MONDAY, 
+  TUESDAY, 
+  WEDNESDAY, 
+  THURSDAY, 
+  FRIDAY, 
+  ... 
+}
 ```
 
+- 열거 상수는 열거 타입의 값으로 사용된다
 
+  - 관례적으로, 열거 상수는 모두 대문자로 작성한다
 
-## 3. 열거 타입 변수
+  - 열거 상수가 여러 단어로 구성될 경우, 단어 사이를 밑줄 (_)로 연결한다
+
+    ```java
+    public enum LoginResult {
+    	LOGIN_SUCCESS,
+    	LOGIN_FAILED
+    }
+    ```
+
+    
+
+## 3. Enum 타입 변수 (열거 타입 변수)
+
+   Enum 타입을 선언했다면, 이제 Enum 타입을 비로소 사용할 수 있다. Enum 타입도 하나의 데이터 타입이므로, 변수를 선언하고 사용해야 한다. 아래는 Enum 타입 변수를 선언하는 방식에 대해 설명한다.
+
+### Enum 타입 변수 선언
 
 ```java
 열거타입 변수;
 ```
+
+##### Enum Type - Week 로 변수 선언
 
 ```java
 Week today;
 Week reservationDay;
 ```
 
+##### Enum 타입 변수를 선언했다면, 아래와 같이 Enum 상수를 저장할 수 있다.
+
 - 열거 상수는 단독으로 사용 불가능하다
-- 반드시 **열거타입.열거상수** 로 사용해야 한다
+- 반드시 **`열거타입.열거상수`** 로 사용해야 한다
 
 ```java
 열거타입 변수 = 열거타입.열거상수;
+
+// today 라는 Enum 변수에 열거 상수인 SUNDAY를 저장하는 방법
 Week today = Week.SUNDAY;
 ```
 
-- 열거 타입도 참조 타입이기 때문에 **null** 저장 가능하다
+- 또한, Enum 타입이 **참조 타입**이기 때문에 **null** 을 저장 가능하다
 
   ```java
   Week birthday = null;
   ```
 
-- 열거 상수 = 객체
 
-<img src="image/enum.png" alt="image-20210130110910283" style="zoom:50%;" />
+
+  참조 타입 변수는 객체를 참조하는 변수인데, 그럼 열거 상수도 객체일까? 그렇다. 열거 상수는 열거 객체로 생성된다. 아래와 같이, 열거 타입 Week의 경우, `MONDAY` 부터 `SUNDAY` 까지의 열거 상수는 총 7개의 Week 객체로 Heap 영역에 생성된다. 그리고 메소드 영역에 생성된 열거 상수가 해당 Week 객체를 각각 참조하게 된다.
+
+- 열거 상수도 **객체**
+
+<img src="image/enum.png" alt="image-20210130110910283" style="zoom: 33%;" />
 
 *[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.174*
+
+
+
+  아래 코드를 이해해보자.
 
 ```java
 Week today = Week.SUNDAY;
 ```
 
 - 열거 타입 변수 `today`는 스택 영역에 생성된다
-- `today` 에 저장되는 값 :  `Week.SUNDAY ` 열거 상수가 참조하는 객체의 번지
-- 열거 상수 `Week.SUNDAY` 와 `today` 변수는 서로 같은 Week 객체를 참조하게 된다
 
-<img src="image/enum_reference.png" alt="image-20210130111027423" style="zoom:50%;" />
+  > JVM Runtime Data Area - JVM Stack Area
+  >
+  >   각 스레드마다 하나씩 존재하며, 스레드가 시작될 때 할당됨
+  >
+  > JVM 스택은 메소드를 호출할 때마다 프레임(Frame)을 push하고, 메소드가 종료되면 해당 프레임을 제거(pop) 하는 동작을 수행한다. Frame 내부에는 로컬 변수 스택이 있어서, 로컬 변수 스택에 기본 타입 변수와 참조 타입 변수가 push되거나 pop 된다. 변수가 이 영역에 생성되는 시점은 초기화가 될 때, 즉, 최초로 변수에 값이 저장될 때이다. 변수는 선언된 블록 안에서만 스택에 존재하고, 블록을 벗어나면 스택에서 제거된다.
+
+- `today` 에 저장되는 값 :  `Week.SUNDAY ` 열거 상수가 참조하는 객체의 번지
+
+- 열거 상수 `Week.SUNDAY` 와 `today` 변수는 서로 같은 **Week 객체를 참조**하게 된다
+
+<img src="image/enum_reference.png" alt="image-20210130111027423" style="zoom: 33%;" />
 
 *[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.174*
+
+그러므로, `today` 변수와 `Week.SUNDAY` 상수의 == 연산 결과는 true이다.
+
+```java
+today == Week.SUNDAY // true
+```
+
+  아래 코드에서 `week1 == week2` 의 결과 또한 true 이다. `week1` , `week2`, ` Week.SATURDAY` 모두 동일한 Week 객체를 참조하기 때문이다.
 
 ```java
 Week week1 = Week.SATURDAY;
