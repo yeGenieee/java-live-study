@@ -153,10 +153,9 @@ System.out.println(week1 == week2); // true
 
 # 2. Enum이 제공하는 메소드
 
-## 1. 열거 객체의 메소드 - java.lang.Enum 클래스에 선언된 메소드
+  모든 Enum 타입은 컴파일 시에 `java.lang.Enum` 클래스를 상속하게 되어있기 때문에, `java.lang.Enum` 에 선언된 메소드를 이용할 수 있다. Enum 객체가 가지는 메소드는 아래와 같다
 
-- 열거 객체 : 열거 상수의 문자열을 내부 데이터로 가진다
-- 모든 열거 타입 - 컴파일 시 Enum 클래스를 상속하게 된다
+## 1. 열거 객체의 메소드 - java.lang.Enum 클래스에 선언된 메소드
 
 | 리턴 타입 | 메소드 (매개변수)    | 설명                                  |
 | --------- | -------------------- | ------------------------------------- |
@@ -210,8 +209,10 @@ System.out.println(week1 == week2); // true
 - 매개값으로 주어지는 문자열과 동일한 문자열을 가지는 열거 객체를 리턴한다
 
   ```java
-  Week weekDay = Week.valueOf("SATURDAY"); // weekDay 변수는 Week.SATURDAY 열거 객체를 참조하게 됨
+  Week weekDay = Week.valueOf("SUNDAY"); // weekDay 변수는 Week.SUNDAY 열거 객체를 참조하게 됨
   ```
+  
+  <img src="image/enum_valueOf.png" alt="image-20210205152748869" style="zoom: 33%;" />
 
 ### 5. values() 메소드
 
@@ -224,13 +225,16 @@ System.out.println(week1 == week2); // true
   }
   ```
 
+- Week 배열은 다음과 같이 생성된다
+
+  - 배열의 인덱스는 열거 객체의 순번과 같고,
+  - 각 인덱스 값은 해당 순번의 열거 객체 번지이다
+
   <img src="image/enum_values.png" alt="image-20210130111411425" style="zoom:50%;" />
 
   *[출처] : 이것이 자바다 - 신용권의 Java 프로그래밍 정복 1권 p.179*
 
-  - Week 배열은 다음과 같이 생성된다
-    - 배열의 인덱스는 열거 객체의 순번과 같고,
-    - 각 인덱스 값은 해당 순번의 열거 객체 번지이다
+  
 
 #### Enum values() 예제
 
