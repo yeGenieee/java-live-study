@@ -303,9 +303,17 @@ public class BoundedTypeParameterExample {
 
 ## 4. Erasure
 
-Type Erasure
+#### Generic Type Erasure
 
-- 컴파일 타임에만 타입을 검사하고, 런타임에는 해당 타입 정보를 알지 못하는 것을 말한다
+- 제네릭은 컴파일 타임에만 타입을 검사하고, Erasure에 의해 런타임에는 해당 타입 정보가 제거 되어 알지 못하는 것을 말한다
+
+#### 규칙
+
+- Unbounded Type 은 Object로 변환한다
+- Bounded Type은 뒤에 작성한 객체로 변환한다
+- Erasure는 Class, Method, Interface 에 적용된다
+
+
 
 ```java
 public static <E> boolean constrainsElement(E [] elements, E element) {
